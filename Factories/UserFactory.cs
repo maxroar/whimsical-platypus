@@ -7,7 +7,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace BeerBudy.Factory
+namespace BeerBuddy.Factory
 {
     public class UserFactory : IFactory<User> 
     {

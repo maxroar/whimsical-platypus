@@ -15,6 +15,8 @@ namespace BeerBuddy
 {
     public class Startup
     {
+        // public IConfiguration Configuration { get; private set; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -25,7 +27,7 @@ namespace BeerBuddy
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot Configuration { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
