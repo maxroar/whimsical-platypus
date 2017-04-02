@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MySQL.Data.EntityFrameworkCore.Extensions;
 
-namespace WebApplicationBasic
+namespace BeerBuddy
 {
     public class Startup
     {
@@ -30,6 +31,10 @@ namespace WebApplicationBasic
         {
             // Add framework services.
             services.AddMvc();
+            services.AddSession();
+            services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
+            services.AddDbContext<Context>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
+            services.AddOptions();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,7 @@ namespace WebApplicationBasic
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
