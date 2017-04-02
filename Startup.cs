@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MySQL.Data.EntityFrameworkCore.Extensions;
+using BeerBuddy.Factory;
 
 namespace BeerBuddy
 {
@@ -33,7 +34,9 @@ namespace BeerBuddy
             services.AddMvc();
             services.AddSession();
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
-            services.AddDbContext<Context>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
+            //add all factories here!!!!!!!!!!
+            services.AddScoped<UserFactory>();
+            
             services.AddOptions();
         }
 
