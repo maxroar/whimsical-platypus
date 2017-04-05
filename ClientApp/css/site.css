@@ -64,3 +64,12 @@
         text-overflow: ellipsis;
     }
 }
+
+/*----------------------------------------------------------------*/
+/*all of our css goes below here*/
+/*----------------------------------------------------------------*/
+
+/*validation error coloring*/
+.error {
+    color: tomato;
+}
